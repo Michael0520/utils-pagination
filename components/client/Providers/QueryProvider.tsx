@@ -2,11 +2,11 @@
 
 import { ReactNode } from "react"
 
-interface QueryProvidersProps {
+interface QueryProvidersProp {
   children: ReactNode
 }
-const QueryProviders = ({ children }: QueryProvidersProps) => {
+const QueryProvider = ({ children }: QueryProvidersProp) => {
   return <div>{children}</div>
 }
 
-export default QueryProviders
+export default QueryProvider
