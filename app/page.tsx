@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
+import PaginationControls from "@/components/PaginationControls"
 
 export default function IndexPage() {
   return (
@@ -34,6 +35,8 @@ export default function IndexPage() {
           GitHub
         </Link>
       </div>
+      {/* pagination */}
+      <PaginationControls />
     </section>
   )
 }
