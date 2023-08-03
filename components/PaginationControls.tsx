@@ -2,17 +2,20 @@
 
 import { FC } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { Button } from "./ui/button"
 
 interface PaginationControlsProps {
   hasNextPage: boolean
   hasPrevPage: boolean
+  totalSize: number
 }
 
 const PaginationControls: FC<PaginationControlsProps> = ({
   hasNextPage,
   hasPrevPage,
+  totalSize,
 }) => {
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -28,25 +31,27 @@ const PaginationControls: FC<PaginationControlsProps> = ({
   }
 
   return (
-    <div className="flex gap-4">
+    <div className="flex items-center justify-center gap-4">
       <Button
-        className="bg-blue-500 p-1 text-white"
+        className="bg-blue-500 p-2 text-white"
         disabled={!hasPrevPage}
         onClick={handleClickToPrevPage}
       >
-        prev page
+        <ChevronLeft className="h-5 w-5" />
+        <span className="sr-only">First page</span>
       </Button>
 
       <div>
-        {page} / {Math.ceil(10 / Number(per_page))}
+        {page} / {Math.ceil(totalSize / Number(per_page))}
       </div>
 
       <Button
-        className="bg-blue-500 p-1 text-white"
+        className="bg-blue-500 p-2 text-white"
         disabled={!hasNextPage}
         onClick={handleClickToNextPage}
       >
-        next page
+        <ChevronRight className="h-5 w-5" />
+        <span className="sr-only">First page</span>
       </Button>
     </div>
   )
